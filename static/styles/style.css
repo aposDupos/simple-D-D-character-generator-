@@ -1,0 +1,45 @@
+body{
+    font-family: "Microsoft Sans Serif";
+    src: url("../fonts/micross.ttf");
+}
+.header h3 {
+    font-family: "Mistral";
+    src: url("../fonts/3893.ttf");
+    font-size: 38pt;
+}
+
+.header h4, .generation{
+    font-family: "Ravie";
+    src: url("../fonts/RAVIE.TTF");
+    font-size: 30pt;
+    color: white;
+    background: black;
+}
+
+.choose-gender, .choose-race {
+    font-size: 23pt;
+}
+
+.male-female {
+    font-size: 16pt;
+}
+
+input[type=button] {
+    font-size: 30pt;
+    background: black;
+    color: white;
+    font-weight: 100;
+}
+
+.container {
+    background: #D1EAEF;
+}
+
+.main {
+    background: #ADBFC3;
+    border-radius: 30px;
+}
+.selectRace select{
+    background: #CED9DB;
+    border-radius: 30px;
+}
