@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+
+    <title>Document</title>
+</head>
+<body>
+
+<div class="container col-6">
+    <div class="header col-12 text-center">
+        <h3> Генератор характеристик персонажа </h3>
+        <h4 class="w-75 m-auto"> Dungeon & dragons </h4>
+    </div>
+    <div class="main col-8 m-auto">
+
+        <form name="form-gender" method="post" action="{{ url_for('add_data') }}">
+            <div class="forms d-flex justify-content-around align-items-baseline">
+                <div class="gender">
+                    <p class="male-female">
+                    <p class="choose-gender"> Выберите пол </p>
+                    <input type="checkbox" name="answer" value="male">Мужской<Br>
+                    <input type="checkbox" name="answer" value="female">Женский<Br>
+                    </p>
+                </div>
+                <div class="race">
+                    <p class="choose-race"> Выберите расу </p>
+                    <select name="select-race" size="1" required class="p-1">
+                        <option selected disabled> Выберите расу</option>
+                        <option value="dwarf"> Дварф</option>
+                        <option value="elf"> Эльф</option>
+                        <option value="halfling"> Полурослик</option>
+                        <option value="human"> Человек</option>
+                        <option value="dragonborn"> Драконорожденный</option>
+                        <option value="gnome"> Гном</option>
+                        <option value="half-elf"> Полуэльф</option>
+                        <option value="half-orc"> Полуорк</option>
+                        <option value="tiefling"> Тифлинг</option>
+                    </select>
+                </div>
+            </div>
+            <p class="text-center"><input type="submit" value="Сгенерировать"></p>
+        </form>
+    </div>
+</div>
+</div>
+</body>
+</html>
