@@ -41,7 +41,7 @@ input[type=submit] {
     border-radius: 30px;
 }
 
-.selectRace select {
+.race select{
     background: #CED9DB;
     border-radius: 30px;
 }
@@ -53,6 +53,6 @@ input[type=submit] {
 }
 
 .characteristics h4, .characteristics div{
-    font-size: 30pt;
+    font-size: 23pt;
     font-family: sans-serif;
 }

@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+            integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
     <title>Document</title>
 </head>
 <body>
@@ -14,35 +17,35 @@
         <h3> Генератор характеристик персонажа </h3>
         <h4 class="w-75 m-auto"> Dungeon & dragons </h4>
     </div>
-    <div class="main col-8 m-auto">
+    <div class="main col-12 m-auto">
 
-        <form name="form-gender" method="post" action="{{ url_for('add_data') }}">
+        <form id="form1" name="form-gender" method="post" action="{{ url_for('add_data') }}">
             <div class="forms d-flex justify-content-around align-items-baseline">
                 <div class="gender">
                     <p class="choose-gender"> Выберите пол </p>
                     <p class="male-female">
 
-                        <input type="checkbox" name="answer" value="male" id="male">
+                        <input type="checkbox" name="answer" value="male" id="male" class="checkbox" on>
                         <label for="male">Мужской</label><Br>
-                        <input type="checkbox" name="answer" value="female" id="female">
+                        <input type="checkbox" name="answer" value="female" id="female" class="checkbox">
                         <label for="female">Женский</label>
                     </p>
                 </div>
                 <div class="race">
                     <p class="choose-race"> Выберите расу </p>
 
-                        <select name="select-race" size="1" class="p-1" id="select-race" required>
-                            <option selected disabled value=""> Выберите расу</option>
-                            <option value="dwarf"> Дварф</option>
-                            <option value="elf"> Эльф</option>
-                            <option value="halfling"> Полурослик</option>
-                            <option value="human"> Человек</option>
-                            <option value="dragonborn"> Драконорожденный</option>
-                            <option value="gnome"> Гном</option>
-                            <option value="half-elf"> Полуэльф</option>
-                            <option value="half-orc"> Полуорк</option>
-                            <option value="tiefling"> Тифлинг</option>
-                        </select>
+                    <select name="select-race" size="1" class="p-1" id="select-race" required>
+                        <option selected disabled value=""> Выберите расу</option>
+                        <option value="dwarf"> Дварф</option>
+                        <option value="elf"> Эльф</option>
+                        <option value="halfling"> Полурослик</option>
+                        <option value="human"> Человек</option>
+                        <option value="dragonborn"> Драконорожденный</option>
+                        <option value="gnome"> Гном</option>
+                        <option value="half-elf"> Полуэльф</option>
+                        <option value="half-orc"> Полуорк</option>
+                        <option value="tiefling"> Тифлинг</option>
+                    </select>
                     <label for="select-race">
                     </label>
                 </div>
@@ -53,19 +56,34 @@
     {% if ready %}
         <div class="characteristics col-12 m-auto text-center">
             <h4 class="text-center">Ваши характеристики:</h4>
-            <div class="d-flex">
-                <div class="m-auto text-center ">
-                    {% for elem in params %}
-                        <div class="d-flex justify-content-around">
-                        <div class="key my-1 w-50">{{ elem }}</div>
-                        <div class="charValue w-50 text-start my-1 px-2">{{ params[elem] }}</div>
-                        </div>
-                    {% endfor %}
-                </div>
+            <div class="m-auto text-center ">
+                {% for elem in params %}
+                    <div class="d-flex justify-content-around align-items-baseline">
+                        <div class="key my-1 w-50 ">{{ elem }}</div>
+                        <div class="charValue w-50 text-start my-1 px-3">{{ params[elem] }}</div>
+                    </div>
+                {% endfor %}
             </div>
         </div>
     {% endif %}
 </div>
-
+<script>
+    $("input:submit").on('click', function () {
+        let checkboxes = document.querySelectorAll('input[type=checkbox]:checked');
+        if (!checkboxes.length) {
+            $("#male").prop('required', true)
+        }
+    })
+    $("input:checkbox").change(function () {
+        $("#male").prop('required', false)
+        if ($(this).is(":checked")) {
+            const group = "input:checkbox[name='" + $(this).attr("name") + "']";
+            $(group).prop("checked", false);
+            $(this).prop("checked", true);
+        } else {
+            $(this).prop("checked", false);
+        }
+    });
+</script>
 </body>
 </html>
