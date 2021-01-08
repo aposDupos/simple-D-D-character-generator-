@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
-
     <title>Document</title>
 </head>
 <body>
@@ -20,32 +19,53 @@
         <form name="form-gender" method="post" action="{{ url_for('add_data') }}">
             <div class="forms d-flex justify-content-around align-items-baseline">
                 <div class="gender">
-                    <p class="male-female">
                     <p class="choose-gender"> Выберите пол </p>
-                    <input type="checkbox" name="answer" value="male">Мужской<Br>
-                    <input type="checkbox" name="answer" value="female">Женский<Br>
+                    <p class="male-female">
+
+                        <input type="checkbox" name="answer" value="male" id="male">
+                        <label for="male">Мужской</label><Br>
+                        <input type="checkbox" name="answer" value="female" id="female">
+                        <label for="female">Женский</label>
                     </p>
                 </div>
                 <div class="race">
                     <p class="choose-race"> Выберите расу </p>
-                    <select name="select-race" size="1" required class="p-1">
-                        <option selected disabled> Выберите расу</option>
-                        <option value="dwarf"> Дварф</option>
-                        <option value="elf"> Эльф</option>
-                        <option value="halfling"> Полурослик</option>
-                        <option value="human"> Человек</option>
-                        <option value="dragonborn"> Драконорожденный</option>
-                        <option value="gnome"> Гном</option>
-                        <option value="half-elf"> Полуэльф</option>
-                        <option value="half-orc"> Полуорк</option>
-                        <option value="tiefling"> Тифлинг</option>
-                    </select>
+
+                        <select name="select-race" size="1" class="p-1" id="select-race" required>
+                            <option selected disabled value=""> Выберите расу</option>
+                            <option value="dwarf"> Дварф</option>
+                            <option value="elf"> Эльф</option>
+                            <option value="halfling"> Полурослик</option>
+                            <option value="human"> Человек</option>
+                            <option value="dragonborn"> Драконорожденный</option>
+                            <option value="gnome"> Гном</option>
+                            <option value="half-elf"> Полуэльф</option>
+                            <option value="half-orc"> Полуорк</option>
+                            <option value="tiefling"> Тифлинг</option>
+                        </select>
+                    <label for="select-race">
+                    </label>
                 </div>
             </div>
             <p class="text-center"><input type="submit" value="Сгенерировать"></p>
         </form>
     </div>
+    {% if ready %}
+        <div class="characteristics col-12 m-auto text-center">
+            <h4 class="text-center">Ваши характеристики:</h4>
+            <div class="d-flex">
+                <div class="m-auto text-center ">
+                    {% for elem in params %}
+                        <div class="d-flex justify-content-around">
+                        <div class="key my-1 w-50">{{ elem }}</div>
+                        <div class="charValue w-50 text-start my-1 px-2">{{ params[elem] }}</div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
 </div>
-</div>
+
 </body>
 </html>

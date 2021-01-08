@@ -4,6 +4,7 @@ from static.script import randoming
 from pathlib import Path
 
 app = Flask(__name__)
+app.config['JSON_AS_ASCII'] = False
 
 
 @app.route('/')
@@ -11,12 +12,14 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/', methods=['post', 'get'])
+@app.route('/', methods=['post'])
 def add_data():
     race = request.form.get('select-race')
     sex = request.form.get('answer')
-    randoming(race, sex)
-    return race
+    params = randoming(race, sex)
+    del params['sex']
+    del params['race']
+    return render_template('index.html', ready=1, params=params)
 
 
 if __name__ == '__main__':

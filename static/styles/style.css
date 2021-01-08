@@ -1,15 +1,16 @@
-body{
-    font-family: "Microsoft Sans Serif";
+body {
+    font-family: "Microsoft Sans Serif", serif;
     src: url("../fonts/micross.ttf");
 }
+
 .header h3 {
-    font-family: "Mistral";
+    font-family: "Mistral", serif;
     src: url("../fonts/3893.ttf");
     font-size: 38pt;
 }
 
-.header h4, .generation{
-    font-family: "Ravie";
+.header h4, .generation {
+    font-family: "Ravie", serif;
     src: url("../fonts/RAVIE.TTF");
     font-size: 30pt;
     color: white;
@@ -24,7 +25,7 @@ body{
     font-size: 16pt;
 }
 
-input[type=button] {
+input[type=submit] {
     font-size: 30pt;
     background: black;
     color: white;
@@ -35,11 +36,23 @@ input[type=button] {
     background: #D1EAEF;
 }
 
-.main {
-    background: #ADBFC3;
+.forms, .characteristics {
+    background: #adbfc3;
     border-radius: 30px;
 }
-.selectRace select{
+
+.selectRace select {
     background: #CED9DB;
     border-radius: 30px;
+}
+
+.charValue {
+    text-align: left;
+    background-color: #CED9DB;
+    border-radius: 50px;
+}
+
+.characteristics h4, .characteristics div{
+    font-size: 30pt;
+    font-family: sans-serif;
 }
