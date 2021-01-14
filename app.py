@@ -1,7 +1,5 @@
-from flask import Flask, render_template, url_for, request, jsonify, redirect
-import json
+from flask import Flask, render_template, url_for, request
 from static.script import randoming
-from pathlib import Path
 
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
@@ -12,7 +10,7 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/', methods=['post','get'])
+@app.route('/', methods=['post', 'get'])
 def add_data():
     race = request.form.get('select-race')
     sex = request.form.get('answer')
